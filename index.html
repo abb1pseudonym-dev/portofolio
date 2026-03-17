@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anas Ari Ferdika | Portfolio & Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #00f5ff;
+  --accent: #00ff88;
+  --bg: #0a0f1c;
+  --card: #111827;
+}
+
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
+body {background: var(--bg);color: white;overflow-x: hidden;}
+
+header {
+  display:flex;justify-content:space-between;padding:20px 50px;position:fixed;width:100%;
+  background: rgba(0,0,0,0.6);backdrop-filter: blur(10px);z-index:1000;
+}
+header h1 {font-family:'Orbitron';color:var(--primary);} 
+
+nav a {
+  text-decoration:none;
+
+  margin-left:20px;color:white;text-decoration:none;position:relative;
+}
+nav a::after {
+  content:'';position:absolute;width:0;height:2px;background:var(--primary);
+  left:0;bottom:-5px;transition:0.3s;
+}
+nav a:hover::after {width:100%;}
+
+.hero {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:50px;
+  padding:0 50px;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero-content {
+  max-width:500px;
+  display:flex;
+  flex-direction:column;
+}
+
+.hero-content .btn {
+  margin-top:40px;
+  align-self:flex-start;
+}
+
+.hero-img {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--primary);
+  box-shadow:0 0 30px var(--primary);
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero-img img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero h2 {
+  font-size:50px;font-family:'Orbitron';
+  background: linear-gradient(90deg,#00f5ff,#00ff88);
+  -webkit-background-clip:text;color:transparent;
+  animation: float 3s ease-in-out infinite;
+}
+.hero p {margin-top:15px;max-width:600px;}
+
+.btn {
+  margin-top:20px;padding:12px 30px;border:1px solid var(--primary);
+  color:var(--primary);border-radius:30px;text-decoration:none;transition:0.3s;
+}
+.btn:hover {background:var(--primary);color:black;box-shadow:0 0 15px var(--primary);} 
+
+.section {padding:80px 20px;max-width:1100px;margin:auto;opacity:0;transform:translateY(50px);transition:0.6s;}
+.section.show {opacity:1;transform:translateY(0);} 
+.section h2 {margin-bottom:20px;color:var(--primary);} 
+
+.grid {display:grid;grid-template-columns: repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+
+.card {
+  text-decoration:none;
+
+  text-align:center;
+  font-size:18px;
+}
+.card i {
+  font-size:40px;
+  margin:20px 0;
+  display:block;
+  transition:0.3s;
+}
+
+/* warna sesuai brand */
+.fa-envelope {color:#EA4335;} 
+.fa-instagram {color:#E1306C;} 
+.fa-github {color:#ffffff;} 
+.fa-whatsapp {color:#25D366;} 
+.fa-facebook {color:#1877F2;} 
+.fa-linkedin {color:#0A66C2;} 
+.fa-x-twitter {color:#000000;} 
+
+.card:hover i {
+  transform:scale(1.2);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.card {
+  background:var(--card);padding:25px;border-radius:15px;transition:0.3s;cursor:pointer;
+}
+.card:hover {transform:translateY(-10px) scale(1.05);box-shadow:0 0 20px var(--primary);} 
+
+.timeline {border-left:2px solid var(--primary);padding-left:20px;}
+.timeline div {margin-bottom:20px;}
+
+.blog-post {
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  transition:0.3s;cursor:pointer;
+}
+.blog-post:hover {transform:scale(1.05);box-shadow:0 0 15px var(--accent);} 
+
+
+footer {text-align:center;padding:30px;border-top:1px solid #222;}
+
+.footer-text {
+  font-size:14px;
+  letter-spacing:1px;
+  opacity:0.9;
+}
+
+/* nama glow premium */
+.footer-text .name {
+  background: linear-gradient(90deg,#00f5ff,#00ff88);
+  -webkit-background-clip:text;
+  color:transparent;
+  transition:0.4s;
+}
+
+.footer-text .name:hover {
+  filter: drop-shadow(0 0 8px #00ff88);
+}
+
+/* divider */
+.footer-text .divider {
+  margin:0 8px;
+  color:#555;
+}
+
+/* tagline */
+.footer-text .tagline {
+  color:#aaa;
+  font-style:italic;
+}
+
+/* love animasi halus */
+.footer-text .love {
+  color:#ff4d6d;
+  margin-left:6px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,100% {transform:scale(1);}
+  50% {transform:scale(1.2);}
+}
+
+@keyframes fadeIn {
+  from {opacity:0;transform:translateY(20px);} 
+  to {opacity:1;transform:translateY(0);} 
+}
+
+@keyframes float {
+  0%,100% {transform:translateY(0);} 
+  50% {transform:translateY(-10px);} 
+}
+
+@media(max-width:768px){
+.hero {flex-direction:column;text-align:center;}
+.hero h2{font-size:32px}
+.hero-img {width:180px;height:180px;}
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+<h1>𝓐𝓪𝓯</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#blog">Blog</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section id="home" class="hero">
+
+<div class="hero-img">
+<img src="nahu.jpeg" alt="profile">
+</div>
+
+<div class="hero-content">
+<h2>Anas Ari Ferdika</h2>
+<p>Network Engineer | Web Developer | System Builder</p>
+<a href="#about" class="btn">Explore</a>
+</div>
+
+</section>
+
+<section id="about" class="section">
+<h2>About Me</h2>
+<p>Hello! I'm Anas Ari Ferdika, a passionate Network Engineer and Developer who specializes in building reliable network systems, managing servers, and creating modern web applications.</p>
+</section>
+
+<section class="section">
+<h2>Experience</h2>
+<div class="timeline">
+<div><strong>2025 - Now</strong><br>Network Engineer & Developer</div>
+<div><strong>2023 - 2025</strong><br>Web Developer</div>
+<div><strong>2021 - 2023</strong><br>IT Support & Networking</div>
+</div>
+</section>
+
+<section id="skills" class="section">
+<h2>Skills</h2>
+<div class="grid">
+<div class="card">Network Configuration</div>
+<div class="card">Routing & Switching</div>
+<div class="card">Server Administration</div>
+<div class="card">HTML & CSS</div>
+<div class="card">Flutter</div>
+<div class="card">Python</div>
+<div class="card">React JS</div>
+<div class="card">Linux Server</div>
+</div>
+</section>
+
+<section id="projects" class="section">
+<h2>Projects</h2>
+<div class="grid">
+<div class="card" onclick="alert('Enterprise Network Setup')">Enterprise Network Setup</div>
+<div class="card" onclick="alert('Web Portfolio Development')">Web Portfolio Development</div>
+<div class="card" onclick="alert('Cloud Server Deployment')">Cloud Server Deployment</div>
+<div class="card" onclick="alert('Linux Server Management')">Linux Server Management</div>
+<div class="card" onclick="alert('Automation with Python')">Automation with Python</div>
+<div class="card" onclick="alert('React Web App')">React Web App</div>
+</div>
+</section>
+
+<section id="blog" class="section">
+<h2>Personal Blog</h2>
+<div class="grid">
+<div class="blog-post" onclick="alert('Open Blog')">
+<h3>Basic Network Configuration Guide</h3>
+<p>Learn how to configure routers and switches step by step.</p>
+</div>
+<div class="blog-post" onclick="alert('Open Blog')">
+<h3>Routing & Switching Explained</h3>
+<p>Understanding how data moves across networks.</p>
+</div>
+<div class="blog-post" onclick="alert('Open Blog')">
+<h3>Linux Server Setup</h3>
+<p>Beginner guide to setting up and managing Linux servers.</p>
+</div>
+<div class="blog-post" onclick="alert('Open Blog')">
+<h3>Building UI with HTML & CSS</h3>
+<p>Create modern and responsive web interfaces.</p>
+</div>
+<div class="blog-post" onclick="alert('Open Blog')">
+<h3>Getting Started with React JS</h3>
+<p>Introduction to building dynamic web apps.</p>
+</div>
+<div class="blog-post" onclick="alert('Open Blog')">
+<h3>Python for Automation</h3>
+<p>Automate tasks efficiently using Python scripting.</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Statistics</h2>
+<div class="grid">
+<div class="card"><h3 style="color:var(--accent);font-size:32px;">25+</h3><p>Projects Completed</p></div>
+<div class="card"><h3 style="color:var(--accent);font-size:32px;">3+</h3><p>Years Experience</p></div>
+<div class="card"><h3 style="color:var(--accent);font-size:32px;">15+</h3><p>Network Deployments</p></div>
+<div class="card"><h3 style="color:var(--accent);font-size:32px;">10+</h3><p>Web Applications Built</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2>Services</h2>
+<div class="grid">
+<div class="card">Network Installation & Configuration</div>
+<div class="card">Web Development</div>
+<div class="card">Server Setup & Maintenance</div>
+<div class="card">IT Consultation</div>
+</div>
+</section>
+
+<section id="contact" class="section">
+<h2>Contact</h2>
+<div class="grid">
+
+<a href="mailto:aaaanasariferdikaaaa@email.com" class="card"><i class="fas fa-envelope"></i></a>
+
+<a href="https://instagram.com/a_verde9" target="_blank" class="card"><i class="fab fa-instagram"></i></a>
+
+<a href="https://github.com/abb1pseudonym-dev" target="_blank" class="card"><i class="fab fa-github"></i></a>
+
+<a href="https://wa.me/6285311887313" target="_blank" class="card"><i class="fab fa-whatsapp"></i></a>
+
+<a href="https://www.facebook.com/GethosynosEudaimoniaTora" target="_blank" class="card"><i class="fab fa-facebook"></i></a>
+
+<a href="https://www.linkedin.com/in/anas-ari-ferdika-37bb983b7/" target="_blank" class="card"><i class="fab fa-linkedin"></i></a>
+
+<a href="https://twitter.com/" target="_blank" class="card"><i class="fab fa-x-twitter"></i></a>
+
+</div>
+</section>
+
+<footer>
+<p class="footer-text">
+  © <span id="year"></span> 
+  <span class="name">Anas Ari Ferdika</span>
+  <span class="divider">|</span>
+  <span class="tagline">Designing the Future</span>
+  <span class="love">❤</span>
+</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script>
+
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
